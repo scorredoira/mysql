@@ -48,7 +48,8 @@ func (rows *mysqlRows) Columns() []string {
 		}
 	} else {
 		for i := range columns {
-			columns[i] = rows.columns[i].name
+			c := rows.columns[i]
+			columns[i] = c.name + "@" + typeStr(c.fieldType)
 		}
 	}
 	return columns
